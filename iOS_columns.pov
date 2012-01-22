@@ -2,6 +2,8 @@
 #declare h = 960;
 #declare wi = 114;
 
+#declare BG = true;
+
 background {
 	rgb 1
 }
@@ -23,16 +25,20 @@ light_source {
 	rgb 0.5
 }
 
-#declare im = box {
-  <-w, -h, 0>/2,
-  <w, h, 1>/2
-  translate z*0.001
-  pigment {
-  	image_map{png "bg.png"} // Screenshot of home screen for overlay.
-  	scale <w, h>
-  	translate <w,h>/2
+#if (BG)
+
+  box {
+    <-w, -h, 0>/2,
+    <w, h, 1>/2
+    translate z*0.001
+    pigment {
+    	image_map{png "bg.png"} // Screenshot of home screen for overlay.
+    	scale <w, h>
+    	translate <w,h>/2
+    }
   }
-}
+
+#end
 
 #declare c = superellipsoid{
 	<0.3,0.01>
